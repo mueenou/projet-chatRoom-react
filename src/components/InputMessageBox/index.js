@@ -3,24 +3,10 @@ import PropTypes from 'prop-types';
 
 
 class InputMessageBox extends React.Component {
-  handleSubmit = (evt) => {
-    // bloque le comportement par défaut
-    evt.preventDefault();
-    // j'execute onAddTask (fonction provenant de App)
-    this.props.onAddMessage();
-  };
-
-  handleChange = (evt) => {
-    // Je recup la valeur
-    const { value } = evt.target;
-    // J'execute la fonction pour modifier le state
-    this.props.onInputChange(value);
-  };
-
   render() {
     return (
-      <form className="inputForm" onSubmit={this.handleSubmit}>
-        <input className="inputMessage" type="textarea" onChange={this.handleChange} />
+      <form className="inputForm" onSubmit={this.props.onAddMessage}>
+        <input className="inputMessage" type="textarea" value={this.props.defMessage} onChange={this.props.onInputChange} />
       </form>
     );
   }
@@ -28,8 +14,9 @@ class InputMessageBox extends React.Component {
 
 
 InputMessageBox.propTypes = {
-  onAddMessage: PropTypes.func.isRequired,
+  defMessage: PropTypes.string.isRequired,
   onInputChange: PropTypes.func.isRequired,
+  onAddMessage: PropTypes.func.isRequired,
 };
 
 export default InputMessageBox;

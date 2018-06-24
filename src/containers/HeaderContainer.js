@@ -12,15 +12,30 @@ import Header from '~/components/Header';
  * Connection du composant au store via connect()()
  */
 
-const mapStateToProps = (state, ownProps) => ({
-  view: state.value,
+const mapStateToProps = state => ({
+  userName: state.userName,
+  modify: state.modify,
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  changeuser: () => {
+const mapDispatchToProps = dispatch => ({
+  changeUser: (evt) => {
+    const { value } = evt.target;
     dispatch({
-      type: 'DISPLAY_CREATE_USER',
-      username,
+      type: 'CHANGE_USER',
+      value,
+    });
+  },
+
+  openBox: () => {
+    dispatch({
+      type: 'OPEN_BOX',
+    });
+  },
+
+  closeBox: (evt) => {
+    evt.preventDefault();
+    dispatch({
+      type: 'CLOSE_BOX',
     });
   },
 });

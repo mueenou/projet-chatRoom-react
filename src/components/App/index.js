@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Chat from '~/containers/ChatContainer';
+import Header from '~/containers/HeaderContainer';
 import './app.styl';
 
 /**
@@ -9,6 +10,7 @@ import './app.styl';
 const App = () => {
   return (
     <div>
+      <Header />
       <Chat />
     </div>
   );

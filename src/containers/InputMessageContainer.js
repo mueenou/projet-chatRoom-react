@@ -13,17 +13,20 @@ import { addMessage, monitorInput } from '~/store/reducer';
  * Connection du composant au store via connect()()
  */
 
-const mapStateToProps = (state, ownProps) => ({
-  message: state.value,
+const mapStateToProps = state => ({
+  defMessage: state.input,
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  onAddMessage: () => {
+const mapDispatchToProps = dispatch => ({
+  onAddMessage: (evt) => {
+    evt.preventDefault();
     dispatch(addMessage());
   },
 
-  onInputChange: (inputMessage) => {
-    dispatch(monitorInput(inputMessage));
+
+  onInputChange: (evt) => {
+    const { value } = evt.target;
+    dispatch(monitorInput(value));
   },
 });
 
