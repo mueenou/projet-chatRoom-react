@@ -14,6 +14,7 @@ const MONITOR_INPUT = 'MONITOR_INPUT';
 const CHANGE_USER = 'CHANGE_USER';
 const OPEN_BOX = 'OPEN_BOX';
 const CLOSE_BOX = 'CLOSE_BOX';
+const WEBSOCKET_RECEIVE = 'WEBSOCKET_RECEIVE';
 /**
  * Reducer de l'application
  */
@@ -25,12 +26,13 @@ const reducer = (currentState = initialState, action = {}) => {
         input: action.text,
       };
 
-    case ADD_MESSAGE:
+    case WEBSOCKET_RECEIVE:
+    console.log(action.message);
       return {
         ...currentState,
         message: [
           ...currentState.message,
-          currentState.input,
+          action.message,
         ],
         input: '',
       };

@@ -1,28 +1,21 @@
-/**
- * Dépendances npm : utilitaire Redux
- */
-import { createStore, compose, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 
-/**
- * Dépendances locales : le reducer
- */
-import reducer from './reducer';
-import preventDuplicates from './middlewares/preventDuplicates';
+import socket from '~/store/middlewares/webSocket'; // notre middleware custom
+import reducer from '~/store/reducer'; // notre reducer custom
 
-/**
- * Création du store
- */
-// https://github.com/zalmoxisus/redux-devtools-extension
-const devTools = []
+// Extension Redux Dev Tools
+let devTools = [];
 if (window.devToolsExtension) {
-  // On configure l'extension Redux pour Chrome/Firefox.
-  devTools.push(window.devToolsExtension());
+  devTools = [window.devToolsExtension()];
 }
 
-const preventDuplicatesMW = applyMiddleware(preventDuplicates);
+// Middlewares custom — on n'en a qu'un seul
+const socketMiddleware = applyMiddleware(socket);
 
-const enhancers = compose(preventDuplicatesMW, ...devTools);
+// Enhancers : les extensions/outils + les middlewares custom
+const enhancers = compose(socketMiddleware, ...devTools);
 
+// Store, configuré avec le reducer et les "enhancers"
 const store = createStore(reducer, enhancers);
 
 export default store;

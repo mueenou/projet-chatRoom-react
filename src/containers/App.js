@@ -12,11 +12,16 @@ import App from '~/components/App';
  * Connection du composant au store via connect()()
  */
 
-const mapStateToProps = (state, ownProps) => ({
-  randomValue: state.value,
+const mapStateToProps = state => ({
+  message: state.value,
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
+  webSocketConnect: () => {
+    dispatch({
+      type: 'WEBSOCKET_CONNECT',
+    });
+  },
 });
 
 const AppContainer = connect(

@@ -7,17 +7,23 @@ import './app.styl';
 /**
  * L'application simule un lancé de dé.
  */
-const App = () => {
-  return (
-    <div>
-      <Header />
-      <Chat />
-    </div>
-  );
-};
+class App extends React.Component {
+  componentDidMount() {
+    this.props.webSocketConnect();
+  }
+  render() {
+    return (
+      <div>
+        <Header />
+        <Chat />
+      </div>
+    );
+  }
+}
 
 
 App.propTypes = {
+  webSocketConnect: PropTypes.func.isRequired,
 };
 
 

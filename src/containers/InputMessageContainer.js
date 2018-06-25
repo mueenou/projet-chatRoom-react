@@ -20,7 +20,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onAddMessage: (evt) => {
     evt.preventDefault();
-    dispatch(addMessage());
+    dispatch({
+      type: 'MESSAGE_SEND',
+    });
   },
 
 
