@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 
 const Header = ({ userName, changeUser, modify, openBox, closeBox }) => (
   <div className="header">
-    <h2>Chatroom</h2>
-    <button onClick={openBox} > + </button>
+    <h1>Chatroom</h1>
+    <button onClick={openBox} > Changez votre pseudo </button>
     { modify &&
       <React.Fragment>
-        <form onSubmit={closeBox}>
-          <input type="text" value={userName} onChange={changeUser} />
+        <form className="userInputForm" onSubmit={closeBox}>
+          <input className="userInputForm-input" type="text" value={userName} onChange={changeUser} />
           <button> OK </button>
         </form>
       </React.Fragment>
-    }  
+    }
   </div>
 );
 

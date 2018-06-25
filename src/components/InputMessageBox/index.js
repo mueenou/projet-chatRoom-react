@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 class InputMessageBox extends React.Component {
   render() {
     return (
-      <form className="inputForm" onSubmit={this.props.onAddMessage}>
-        <input className="inputMessage" type="textarea" value={this.props.defMessage} onChange={this.props.onInputChange} />
+      <form className="chatBox-form" onSubmit={this.props.onAddMessage}>
+        <input className="chatBox-input" type="textarea" value={this.props.defMessage} onChange={this.props.onInputChange} />
       </form>
     );
   }

@@ -6,9 +6,9 @@ import InputMessageBox from '~/containers/InputMessageContainer';
 
 const Chat = ({ message }) => (
   <div className="chatBox">
-    <div>
+    <div className="chatBox-box" >
       { message.map(currentMessage => (
-        <p key={currentMessage.id} >{currentMessage.userName}: { currentMessage.input }</p>
+        <p className="chatBox-currentmessage" key={currentMessage.id} >{currentMessage.userName}: { currentMessage.input }</p>
       )) }
     </div>
     <InputMessageBox />
